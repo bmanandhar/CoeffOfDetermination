@@ -57,9 +57,9 @@ df.devs_prod = df.bills_dev*df.tips_dev        #product of bills_dev and tips_de
 
 
 slope = round(sum(df.devs_prod)/sum(df.bills_dev_sqr), 4) 
-intercept = round(slope*np.mean(df.bills) - np.mean(df.tips), 4)
-df.tips_pred = slope*df.bills - intercept
-df.obs_pred_diff = tips - df.tips_pred
+intercept = round(slope*np.mean(df.bills) - np.mean(df.tips), 4)    #point where the st line meets at y-axis
+df.tips_pred = slope*df.bills - intercept     #predicted tip amount
+df.obs_pred_diff = tips - df.tips_pred        #diff between observed and predicted tip amounts
 df.diff_sqr = df.obs_pred_diff**2
 
 
