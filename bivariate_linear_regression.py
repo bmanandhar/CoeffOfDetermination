@@ -11,9 +11,9 @@ import pandas as pd
 # In[170]:
 
 
-bills_and_tips = dict()
-bills = [34,108,64,88,99,51]
-tips = [5,17,11,8,14,5]
+bills_and_tips = dict()         #an empty dict for bill and tip amounts
+bills = [34,108,64,88,99,51]    #bill amounts
+tips = [5,17,11,8,14,5]         #tip amounts
 bills_and_tips['bills'] = bills
 bills_and_tips['tips'] = tips
 columns = ['bills', 'bills_dev', 'bills_dev_sqr', 'tips', 'tips_dev', 'tips_dev_sqr', 'devs_prod', 'tips_pred', 'obs_pred_diff', 'diff_sqr']
