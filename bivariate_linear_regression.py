@@ -6,6 +6,7 @@
 
 import numpy as np
 import pandas as pd
+import matplotlib.pyplot as plt
 
 
 # In[170]:
@@ -24,7 +25,7 @@ columns = ['bills', 'bills_dev', 'bills_dev_sqr', 'tips',
 # In[39]:
 
 
-get_ipython().run_cell_magic('HTML', '', '<style type="text/css">\ntable.dataframe td, table.dataframe th {\n    border: 1px  black solid !important;\n  color: black !important;\n}\n</style>')
+# get_ipython().run_cell_magic('HTML', '', '<style type="text/css">\ntable.dataframe td, table.dataframe th {\n    border: 1px  black solid !important;\n  color: black !important;\n}\n</style>')
 
 
 # In[171]:
@@ -79,6 +80,34 @@ sst = sum(df.tips_dev_sqr)
 ssr = sst - sse                    #sum of squared errors due to regression
 r2 = round(ssr/sst, 4)             #coeff of determination
 r2                                 
+
+#Graphs:
+
+# %matplotlib inline
+
+x = df.bills
+y = df.tips
+plt.plot(x,y,'o',label='Observed Tips', color='green')
+plt.legend(loc='upper left')
+
+x = df.bills
+y = df.tips_pred
+plt.plot(x,y,'o',label='Predicted Tips', color='purple')
+plt.legend(loc='upper left')
+
+m, b = 0, 10.0 #slope & intercept for mean-tips and customer nos
+plt.plot(x, x*m+b, label='mean of observed tips')
+plt.legend(loc='upper left')
+
+x = np.linspace(30,115,100)
+y=0.1462*x-0.8188                  
+plt.plot(x, y, '-r', label='y=0.1462*x-0.8188')
+plt.title('Graph of y=0.1462*x-0.8188')
+plt.xlabel('Bill Amounts', color='#1C2833')
+plt.ylabel('Tip Amounts', color='#1C2833')
+plt.legend(loc='upper left')
+plt.grid()
+plt.show()
 
 
 # In[ ]:
