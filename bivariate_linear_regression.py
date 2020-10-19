@@ -35,43 +35,41 @@ df = pd.DataFrame(columns=columns)
 
 
 df.bills = bills
-df.bills_dev = df.bills - np.mean(df.bills)
-df.bills_dev_sqr = df.bills_dev**2
+df.bills_dev = df.bills - np.mean(df.bills)    #bill amount deviation from mean
+df.bills_dev_sqr = df.bills_dev**2             #square of dev
 
 
 # In[181]:
 
 
 df.tips = tips
-df.tips_dev = df.tips - np.mean(df.tips)
-df.tips_dev_sqr = df.tips_dev**2
+df.tips_dev = df.tips - np.mean(df.tips)       #tip amount deviation from mean
+df.tips_dev_sqr = df.tips_dev**2               #square of dev
 
 
 # In[185]:
 
 
-df.devs_prod = df.bills_dev*df.tips_dev
+df.devs_prod = df.bills_dev*df.tips_dev        #product of bills_dev and tips_dev
 
 
-# In[224]:
+# In[232]:
 
 
-slope = round(sum(df.devs_prod)/sum(df.bills_dev_sqr), 4)
+slope = round(sum(df.devs_prod)/sum(df.bills_dev_sqr), 4) 
 intercept = round(slope*np.mean(df.bills) - np.mean(df.tips), 4)
 df.tips_pred = slope*df.bills - intercept
 df.obs_pred_diff = tips - df.tips_pred
 df.diff_sqr = df.obs_pred_diff**2
 
-print(intercept, slope)
 
-
-# In[225]:
+# In[233]:
 
 
 df
 
 
-# In[231]:
+# In[234]:
 
 
 sse = round(sum(df.diff_sqr), 4)   #sum of suared errors
